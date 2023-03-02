@@ -32,13 +32,14 @@ error_reporting(E_ALL & ~E_NOTICE);
     $stmt = $pdo->query($sql);
 
     $name = $_POST["name"];
-    $comment = $_POST["comment"]; //好きな名前、好きな言葉は自分で決めること
+    $comment = $_POST["comment"]; 
     $pass=$_POST["pass"];
     $pass_A=$_POST["pass_A"];
     $pass_B=$_POST["pass_B"];
     $date=date("Y/m/d H:i:s");
     $delete = $_POST["delete"];intval($delete);
     $edit=$_POST["edit"];intval($edit);
+    
 //書き込み
     if((!empty($name))&&(!empty($comment))
     &&(!empty($pass))){
@@ -56,7 +57,7 @@ error_reporting(E_ALL & ~E_NOTICE);
     else{
     $id = $edit; //変更する投稿番号
     $name = $_POST["name"];
-    $comment = $_POST["comment"]; //変更したい名前、変更したいコメントは自分で決めること
+    $comment = $_POST["comment"]; 
     $sql = 'UPDATE tbtest SET name=:name,comment=:comment,pass=:pass,date=:date WHERE id=:id';
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
